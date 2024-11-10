@@ -8,8 +8,10 @@
 </head>
 <body>
   <div class="login">
-    <button onclick="login()">Log in</button>
-    <button onclick="signup()">Sing up</button>
+    <button class="sml-bttn" onclick="login()">Log in</button>
+  </div>
+  <div class="signup">
+    <button class="sml-bttn" onclick="signup()">Sing up</button>
   </div>
     <div class="container" id="FoodRoulette">
         <h1>Food Roulette</h1>
@@ -17,14 +19,21 @@
         <button onclick="startRoulette(), setFoodRouletteLeft()">Start Roulette</button>
     </div>
     <div>
+      <h4>Do you want to pick multiple days?</h4>
+      <p>choose down below</p>
+    </div>
+    <div>
       <p id="result"></p>
     </div>
     <script>
+        function login() {}
+        function signup () {}
         async function startRoulette() {
             try {
                 //const response = await fetch('/start-roulette');
                 //const food = await response.json();
                 document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+                document.getElementById('result').classList.add("column-right")
             } catch (error) {
                 console.error('Error:', error);
             }

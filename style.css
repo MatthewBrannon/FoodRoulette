@@ -10,11 +10,24 @@ body {
 
 .login {
     background-color: lightgray;
-    border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px;
     float: right;
     right: 0;
     top: 0;
+}
+
+.signup {
+    background-color: lightgray;
+    padding: 10px;
+    float: right;
+    right: 0;
+    top: 0;
+}
+
+.sml-bttn{
+    font-size: 12px;
+    width: 80px;
+    height: 35px;
 }
 
 .container {
@@ -27,7 +40,9 @@ h1 {
 
 p {
     color: #6c757d;
+    text-align: center;
 }
+
 
 button {
     background-color: #007bff;
@@ -49,4 +64,13 @@ button:hover {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.column-right{
+    float: right;
+    width:50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
