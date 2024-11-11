@@ -1,19 +1,32 @@
-<!DOCTYPE html PUBLIC ""> 
-<html>
-  <head>
-    <link rel="stylesheet" href="style.css"
-    <title>First javascript</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Roulette</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <div class="container">
-      <h1>Food Roulette App</h1>
-      <h3>Welcome home</h3>
+        <h1>Food Roulette</h1>
+        <p>Can't decide what to eat? Let Food Roulette choose for you!</p>
+        <button onclick="startRoulette()">Start Roulette</button>
     </div>
     <div>
-      <p>This is a second div </p>
+      <p id="result"></p>
     </div>
-    <script lang="javascript" type="text/javascript" src="server.js"></script>
-  </body>
+    <script>
+        async function startRoulette() {
+            try {
+                const response = await fetch('/start-roulette');
+                const food = await response.json();
+                document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
 </html>
 <!--<!DOCTYPE html>
 <html lang="en">
@@ -53,9 +66,6 @@
     </div>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1571.0.min.js"></script>
     <script type="text/javascript">
-            
-            
-            
             AWS.config.region = "us-east-1"; 
             console.log(AWS.config.region)
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -85,8 +95,6 @@
                 
               })
             }
-            
-           
 
         </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
