@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+  <div class="login">
+    <button onclick="login()">Log in</button>
+    <button onclick="signup()">Sing up</button>
+  </div>
+    <div class="container" id="FoodRoulette">
         <h1>Food Roulette</h1>
         <p>Can't decide what to eat? Let Food Roulette choose for you!</p>
-        <button onclick="startRoulette()">Start Roulette</button>
+        <button onclick="startRoulette(), setFoodRouletteLeft()">Start Roulette</button>
     </div>
     <div>
       <p id="result"></p>
@@ -18,12 +22,19 @@
     <script>
         async function startRoulette() {
             try {
-                const response = await fetch('/start-roulette');
-                const food = await response.json();
+                //const response = await fetch('/start-roulette');
+                //const food = await response.json();
                 document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
             } catch (error) {
                 console.error('Error:', error);
             }
+        }
+        function setFoodRouletteLeft(){
+          try{
+            document.getElementById('FoodRoulette').classList.add("column-left")
+          } catch (error){
+            console.log('Error:', error)
+          }
         }
     </script>
 </body>

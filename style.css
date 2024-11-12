@@ -1,19 +1,34 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
+
+.login {
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px 20px;
+    float: right;
+    right: 0;
+    top: 0;
+}
+
 .container {
     margin-top: 50px;
 }
+
 h1 {
     color: #47698b;
 }
+
 p {
     color: #6c757d;
 }
+
 button {
     background-color: #007bff;
     color: white;
@@ -23,6 +38,15 @@ button {
     cursor: pointer;
     border-radius: 5px;
 }
+
 button:hover {
     background-color: #0056b3;
+}
+
+.column-left{
+    float: left;
+    width:50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
