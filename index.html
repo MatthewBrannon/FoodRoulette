@@ -45,27 +45,46 @@
         function checkDays () {
 
         }
+        
         async function startRoulette() {
+          // get the check box list of days
           const weekday = document.getElementById("weekday-selector")
-          // need to check if any day is selected or not
-          //if weekday.children
+
+          //find if there are days checked if any
+          let is_checked = false
           for (let i = 0; i < weekday.children.length; i++) {
             if (weekday.children[i].id.includes("weekday-")){
-              console.log(weekday.children[i])
               if (weekday.children[i].checked){
-                console.log("item is checked")
+                is_checked = true
+                console.log(`Child ${i} is checked`)
+                break
               }
             }
           }
-          try {
-              //const response = await fetch('/start-roulette');
-              //const food = await response.json();
-              document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
-              document.getElementById('result').classList.add("column-right")
-          } catch (error) {
-              console.error('Error:', error);
+
+          if (is_checked === true){
+            for (let i = 0; i < weekday.children.length; i++) {
+              if (weekday.children[i].id.includes("weekday-")){
+                //console.log(weekday.children[i])
+                if (weekday.children[i].checked){
+                  //console.log("item is checked")
+                  try {
+                      //const response = await fetch('/start-roulette');
+                      //const food = await response.json();
+                      document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+                      document.getElementById('result').classList.add("column-right")
+                  } catch (error) {
+                      console.error('Error:', error);
+                  }
+                }
+              }
+            }
+          }
+          else{
+
           }
         }
+
         function setFoodRouletteLeft(){
           try{
             document.getElementById('FoodRoulette').classList.add("column-left")
