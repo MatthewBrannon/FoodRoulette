@@ -17,11 +17,24 @@
         <h1>Food Roulette</h1>
         <p>Can't decide what to eat? Let Food Roulette choose for you!</p>
         <button onclick="startRoulette(), setFoodRouletteLeft()">Start Roulette</button>
-    </div>
-    <div>
-      <h4>Do you want to pick multiple days?</h4>
-      <p>choose down below</p>
-      <p>test to apply changes</p>
+        <h4>Do you want to pick multiple days?</h4>
+        <p>choose down below</p>
+        <div id="weekday-selector">
+          <input type="checkbox" id="weekday-mon" class="weekday" />
+          <label for="weekday-mon">Monday</label>
+          <input type="checkbox" id="weekday-tue" class="weekday" />
+          <label for="weekday-tue">Tuesday</label>
+          <input type="checkbox" id="weekday-wed" class="weekday" />
+          <label for="weekday-wed">Wednesday</label>
+          <input type="checkbox" id="weekday-thu" class="weekday" />
+          <label for="weekday-thu">Thursday</label>
+          <input type="checkbox" id="weekday-fri" class="weekday" />
+          <label for="weekday-fri">Friday</label>
+          <input type="checkbox" id="weekday-sat" class="weekday" />
+          <label for="weekday-sat">Saturday</label>
+          <input type="checkbox" id="weekday-sun" class="weekday" />
+          <label for="weekday-sun">Sunday</label>
+      </div>
     </div>
     <div>
       <p id="result"></p>
@@ -29,15 +42,29 @@
     <script>
         function login() {}
         function signup () {}
+        function checkDays () {
+
+        }
         async function startRoulette() {
-            try {
-                //const response = await fetch('/start-roulette');
-                //const food = await response.json();
-                document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
-                document.getElementById('result').classList.add("column-right")
-            } catch (error) {
-                console.error('Error:', error);
+          const weekday = document.getElementById("weekday-selector")
+          // need to check if any day is selected or not
+          //if weekday.children
+          for (let i = 0; i < weekday.children.length; i++) {
+            if (weekday.children[i].id.includes("weekday-")){
+              console.log(weekday.children[i])
+              if (weekday.children[i].checked){
+                console.log("item is checked")
+              }
             }
+          }
+          try {
+              //const response = await fetch('/start-roulette');
+              //const food = await response.json();
+              document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+              document.getElementById('result').classList.add("column-right")
+          } catch (error) {
+              console.error('Error:', error);
+          }
         }
         function setFoodRouletteLeft(){
           try{
