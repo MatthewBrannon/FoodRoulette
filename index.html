@@ -37,12 +37,6 @@
       </div>
     </div>
     <div id = "result">
-      <h2 id="recipe-header">
-        recipe-header test color
-      </h2>
-      <p id="recipe">
-        recipe test color
-      </p>
     </div>
     <script>
         function login() {}
@@ -56,9 +50,8 @@
           for (let i = 0; i < weekday.children.length; i++) {
             if (weekday.children[i].id.includes("weekday-")){
               if (weekday.children[i].checked){
-                is_checked = true
-                console.log(`Child ${i} is checked`)
-                break
+                is_checked = true;
+                break;
               }
             }
           }
@@ -66,31 +59,35 @@
         }
 
         function createWeekdayDiv(day, recipe){
-          //console.log("called createWeekdayDiv")
           const day_header = document.createElement("h2");
           day_header.id = "recipe-header"
           day_header.innerText = day;
           
           const recipe_p = document.createElement("p");
           recipe_p.id = "recipe"
-          recipe_p.style["color"] = "rgb(199, 10, 193) !important";
+          recipe_p.style.setProperty("color","rgb(199, 10, 193) !important");
           recipe_p.innerText = recipe;
           
           document.getElementById("result").appendChild(day_header)
           document.getElementById("result").appendChild(recipe_p)
         }
         
+        function clearResultDiv(){
+          const doc = document.getElementById("result");
+          while (doc.firstChild){
+            doc.removeChild(doc.lastChild);
+          }
+        }
         async function startRoulette() {
           // get the check box list of days
+          clearResultDiv();
           const weekday = document.getElementById("weekday-selector")
           is_checked = isChecked()
 
           if (is_checked === true){
             for (let i = 0; i < weekday.children.length; i++) {
               if (weekday.children[i].id.includes("weekday-")){
-                //console.log(weekday.children[i])
                 if (weekday.children[i].checked){
-                  //console.log("item is checked")
                   try {
                     //const response = await fetch('/start-roulette');
                     //const food = await response.json();
@@ -110,6 +107,7 @@
               //const response = await fetch('/start-roulette');
               //const food = await response.json();
               //document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+              let food = "test info"
               createWeekdayDiv("Your Random Recipe", food)
             } catch (error) {
               console.error('Error:', error);
