@@ -39,7 +39,6 @@ h1 {
 }
 
 p {
-    color: #6c757d;
     text-align: center;
 }
 
@@ -73,4 +72,12 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+}
+
+.recipe-header{
+    color:rgb(40, 38, 140) !important;
+}
+
+.recipe {
+    color: rgb(199, 10, 193) !important;
 }
