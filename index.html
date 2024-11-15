@@ -20,9 +20,9 @@
         <h4>Do you want to pick multiple days?</h4>
         <p>choose down below</p>
         <div id="weekday-selector">
-          <input type="checkbox" id="weekday-mon" class="weekday" />
+          <input type="checkbox" id="weekday-monday" class="weekday" />
           <label for="weekday-mon">Monday</label>
-          <input type="checkbox" id="weekday-tue" class="weekday" />
+          <input type="checkbox" id="weekday-tuesday" class="weekday" />
           <label for="weekday-tue">Tuesday</label>
           <input type="checkbox" id="weekday-wed" class="weekday" />
           <label for="weekday-wed">Wednesday</label>
@@ -45,9 +45,7 @@
         function checkDays () {
 
         }
-        
-        async function startRoulette() {
-          // get the check box list of days
+        function isChecked(){
           const weekday = document.getElementById("weekday-selector")
 
           //find if there are days checked if any
@@ -61,6 +59,24 @@
               }
             }
           }
+          return is_checked
+        }
+
+        function createWeekdayDiv(day, recipe){
+          //console.log("called createWeekdayDiv")
+          const day_header = document.createElement("h3");
+          day_header.innerText = day;
+          
+          const recipe_p = document.createElement("p");
+          recipe_p.innerText = recipe
+          day_header.appendChild(recipe_p)
+
+          document.getElementById("result").appendChild(day_header)
+        }
+        async function startRoulette() {
+          // get the check box list of days
+          const weekday = document.getElementById("weekday-selector")
+          is_checked = isChecked()
 
           if (is_checked === true){
             for (let i = 0; i < weekday.children.length; i++) {
@@ -69,18 +85,29 @@
                 if (weekday.children[i].checked){
                   //console.log("item is checked")
                   try {
-                      //const response = await fetch('/start-roulette');
-                      //const food = await response.json();
-                      document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
-                      document.getElementById('result').classList.add("column-right")
+                    //const response = await fetch('/start-roulette');
+                    //const food = await response.json();
+                    let food = "test info";
+                    createWeekdayDiv(weekday.children[i+1].innerText, food)
+                    //document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+                    document.getElementById('result').classList.add("column-right")
                   } catch (error) {
-                      console.error('Error:', error);
+                    console.error('Error:', error);
                   }
                 }
               }
             }
           }
-          else{
+          else {
+            //console.log("item is checked")
+            try {
+              //const response = await fetch('/start-roulette');
+              //const food = await response.json();
+              document.getElementById('result').innerText = `You should eat something`;//: ${food.name}
+              document.getElementById('result').classList.add("column-right")
+            } catch (error) {
+              console.error('Error:', error);
+            }
 
           }
         }
